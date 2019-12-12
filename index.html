@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+    <script src="script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -12,13 +12,12 @@
     <label for="billTotal">Bill Total</label><br>
     <input type="text" id="billTotal"></input><br>
 
-
     <label for="numberDiners">Number Diners</label><br>
     <select id="numberDiners">
     </select><br>
 
     <label for="serviceQuality">Service Quality / Tip</label><br>
-    <select id="serviceQuality"><br>
+    <select id="serviceQuality" onchange="onServiceQualityChange()">
         <option value="30">Excellent (30% Tip)</option>
         <option value="25">Very good (25% Tip)</option>
         <option value="20">Good (20% Tip)</option>
@@ -32,7 +31,5 @@
     <input type="text" id="totalPerDiner" disabled="true"></input><br>
 
     <span id="errorMessage"></span>
-    
-    <script src="script.js"></script>
 </body>
 </html>

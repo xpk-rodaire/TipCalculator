@@ -1,36 +1,43 @@
+"use strict";
 
-var billTotalElement = document.getElementById("billTotal");
-var numberDinersElement = document.getElementById("numberDiners");
-var totalPerDinerElement = document.getElementById("totalPerDiner");
-var serviceQualityElement = document.getElementById("serviceQuality");
-var errorMessage = document.getElementById("errorMessage");
-
-window.onload = function(e){ 
-    var numberDiners = document.getElementById("numberDiners");
-    for (var i = 1; i <= 20; ++i) {
-        var option = document.createElement("option");
-        option.text = i;
-        option.value = i
-        numberDiners.add(option);
-    }
+var $ = function(id) {
+    return document.getElementById(id);
 }
 
 function calcButtonClick() {
+    var billTotalElement = $("billTotal");
     var billTotal = parseFloat(billTotalElement.value);
+    var errorMessageElement = $("errorMessage");
+
     if (window.isNaN(billTotal)) {
-        errorMessage.innerHTML = "Please enter a positive number for 'Bill Total'";
+        errorMessageElement.innerHTML = "Please enter a positive number for 'Bill Total'";
         billTotalElement.value = "";
         billTotalElement.focus();
         return;
-    }
-    else
-    {
-        errorMessage.innerHTML = "";
+    } else {
+        errorMessageElement.innerHTML = "";
     }
 
-    var numberDiners = parseInt(numberDinersElement.value);
+    var numberDiners = parseInt($("numberDiners").value);
+    var tipPercent = $("serviceQuality").value / 100;
+    $("totalPerDiner").value = "$" + ((billTotal * (1 + tipPercent)) / numberDiners).toFixed(2);
+}
 
-    var tipPercent = serviceQualityElement.value / 100;
+function onServiceQualityChange() {
+    var errorMessageElement = $("errorMessage");
+    if ($("serviceQuality").value < 20) {
+        errorMessageElement.innerHTML = "Don't be a cheap bastard!";
+    } else {
+        errorMessageElement.innerHTML = "";
+    }
+}
 
-    totalPerDiner.value = "$" + ((billTotal * (1 + tipPercent)) / numberDiners).toFixed(2);
+window.onload = function(e){ 
+    for (var i = 1; i <= 20; ++i) {
+        var option = document.createElement("option");
+        option.text = i;
+        option.value = i;
+        var numberDinersElement = $("numberDiners");
+        numberDinersElement.add(option);
+    }
 }
