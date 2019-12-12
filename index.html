@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>Document</title>
 </head>
 <body>
     <h1>Tip Calculator</h1>
+    <label for="billTotal">Bill Total</label><br>
+    <input type="text" id="billTotal"></input><br>
+
+
+    <label for="numberDiners">Number Diners</label><br>
+    <select id="numberDiners">
+    </select><br>
+
+    <label for="serviceQuality">Service Quality / Tip</label><br>
+    <select id="serviceQuality"><br>
+        <option value="30">Excellent (30% Tip)</option>
+        <option value="25">Very good (25% Tip)</option>
+        <option value="20">Good (20% Tip)</option>
+        <option value="15">Fair (15% Tip)</option>
+        <option value="10">Poor (10% Tip)</option>
+    </select><br>
     
+    <input type="button" id="calcButton" value="Calculate" onclick="calcButtonClick()"></input><br>
+
+    <label for="totalPerDiner">Total Per Diner</label><br>
+    <input type="text" id="totalPerDiner" disabled="true"></input><br>
+
+    <span id="errorMessage"></span>
+    
+    <script src="script.js"></script>
 </body>
 </html>
