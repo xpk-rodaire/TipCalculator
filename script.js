@@ -32,12 +32,12 @@ function onServiceQualityChange() {
     }
 }
 
-window.onload = function(e){ 
+window.onload = function(e) {
+    var numberDinersElement = $("numberDiners"); 
     for (var i = 1; i <= 20; ++i) {
         var option = document.createElement("option");
         option.text = i;
         option.value = i;
-        var numberDinersElement = $("numberDiners");
         numberDinersElement.add(option);
     }
 }
